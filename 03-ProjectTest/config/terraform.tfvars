@@ -45,6 +45,9 @@ subnet_config = {
         }
     }
 }
+
+
+
 internet_GW_config = {
     igw01 = {
         vpc_name = "vpc01"
@@ -83,6 +86,7 @@ nat_GW_config = {
 }
 aws_route_table_config = {
     RT01 = {
+        private = 0
         vpc_name = "vpc01"
         gateway_name = "igw01"
         tags = {
@@ -90,6 +94,7 @@ aws_route_table_config = {
         }
     }
     RT02 ={
+        private = 1
         vpc_name = "vpc01"
         gateway_name = "natgW01"
         tags = {
@@ -97,6 +102,7 @@ aws_route_table_config = {
         }
     }
     RT03 ={
+        private = 1
         vpc_name = "vpc01"
         gateway_name = "natgW02"
         tags = {
@@ -104,4 +110,22 @@ aws_route_table_config = {
         }
     }
 }
-aws_route_table_association_config = {}
+aws_route_table_association_config = {
+    RT01Assoc = {
+        subnet_name = "public-us-east-1a"
+        route_table_name = "RT01"
+    }
+    RT02Assoc = {   
+        subnet_name = "public-us-east-1a"
+        route_table_name = "RT01"
+    }
+    RT03Assoc = {
+        subnet_name = "public-us-east-1a"
+        route_table_name = "RT02"
+    }
+    RT04Assoc = {
+        subnet_name = "public-us-east-1a"
+        route_table_name = "RT03" 
+    }
+    
+}

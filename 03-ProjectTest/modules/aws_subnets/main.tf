@@ -5,3 +5,6 @@ resource "aws_subnet" "main"{
     tags = var.tags
 }
 
+output "subnet_id" {
+  value = aws_subnet.main.id 
+}
