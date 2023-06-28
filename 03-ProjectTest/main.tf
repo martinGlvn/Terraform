@@ -11,4 +11,23 @@ module "aws_subnet"{
     cidr_block = each.value.cidr_block
     availability_zone = each.value.availability_zone
     tags = each.value.tags
-}   
+}  
+
+module "internetGW_module"{
+    source = "./modules/aws_internetGW"
+    vpc_id =
+    tags = 
+}
+
+module "route_table_module"{
+    source = "./modules/aws_route_table"
+    vpc_id = 
+    gateway_id = 
+    tags = ""
+}
+
+module "route_table_association"{
+    source = "./modules/aws_route_table_associate"
+    subnet_id = ""
+    route_table_id =""
+} 
